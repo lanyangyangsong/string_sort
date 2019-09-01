@@ -29,7 +29,8 @@ bool Find_String(OMSYS_STRING *pStringHead, char *pString)
 	OMSYS_STRING *pStr = pStringHead;
 	while (pStr != NULL)
 	{
-		if (memcmp(pStr->pString, pString, strlen(pString)) != 0)
+		//if ((memcmp(pStr->pString, pString, strlen(pString)) != 0) || (strlen(pStr->pString) != strlen(pString)))
+		if (strncmp(pStr->pString, pString, strlen(pString)) != 0)
 		{
 			pStr = pStr->pNext;
 		}
@@ -128,7 +129,8 @@ void Delete_String(OMSYS_STRING *pStringHead, char *pString)
 	}
 
 	OMSYS_STRING *pStr = pStringHead;
-	if (memcmp(pStr->pString, pString, strlen(pString)) == 0)
+	//if ((memcmp(pStr->pString, pString, strlen(pStr->pString)) == 0) && (strlen(pStr->pString) == strlen(pString)))
+	if (strncmp(pStr->pString, pString, strlen(pString)) != 0)
 	{
 		/* 删除的是字符链表首部,释放节点首部内存，修改Head指针 */
 		pStr = pStringHead->pNext;

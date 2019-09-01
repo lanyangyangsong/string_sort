@@ -180,18 +180,6 @@ OMSYS_STRING * Construct_String_List(char *pString)
 				stringLength += 1;
 			}
 
-#if 0
-			/* 遇到，进行分隔 */
-			char *pSplitString = (char *)malloc(sizeof(char)*(stringLength + 1));
-			if (pSplitString == NULL)
-			{
-				return NULL;
-			}
-
-			memcpy(pSplitString, pTempBegin, sizeof(char)*stringLength);
-			*(pSplitString + stringLength) = '\0';
-#endif
-
 			pHead = Insert_String(pHead, pTempBegin, stringLength);
 
 			stringLength = 0;
@@ -299,19 +287,24 @@ int main()
 //	char stringExample[] = "ATN-908C,ATN-910B,ATN-950C,ATN-908C,ATN-990B,";
 //	char stringToCompare[] = "ATN-940B,ATN-908C,ATN-950C,ATN-908C,ATN-910B,";
 
-	char stringExample[MAX_STRING_LENGTH] = { 0 };
-	char stringToCompare[MAX_STRING_LENGTH] = { 0 };
+	for (int i = 0; i < 100; i++)
+	{
+		char stringExample[MAX_STRING_LENGTH] = { 0 };
+		char stringToCompare[MAX_STRING_LENGTH] = { 0 };
 
-	printf("请输入两个字符串进行比较！\n字符串1：\n");
-	scanf_s("%s", stringExample, MAX_STRING_LENGTH-1);
-	printf("字符串2：\n");
-	scanf_s("%s", stringToCompare, MAX_STRING_LENGTH-1);
+		printf("请输入两个字符串进行比较！\n字符串1：\n");
+		scanf_s("%s", stringExample, MAX_STRING_LENGTH-1);
+		printf("字符串2：\n");
+		scanf_s("%s", stringToCompare, MAX_STRING_LENGTH-1);
 
-	printf("stringExample :\n%s\n", stringExample);
-	printf("stringToCompare :\n%s\n", stringToCompare);
+		printf("stringExample :\n%s\n", stringExample);
+		printf("stringToCompare :\n%s\n", stringToCompare);
 
 
-	Compare_Input(stringExample, stringToCompare);
+		Compare_Input(stringExample, stringToCompare);
+
+		system("pause");
+	}
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
